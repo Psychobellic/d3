@@ -1,9 +1,14 @@
-import { G } from "../styles";
+import Eye from "./1-components/eye";
+import Face from "./1-components/Face";
+import { Svg, Eyes, G } from "../styles";
 import { arc } from 'd3';
+import Mouth from "./1-components/mouth";
 
 const SmileyFace = () => {
   const height = 500;
   const width = 960;
+	const centerX = width / 2;
+	const centerY = height / 2;
   const strokeWidth = 10;
   const eyesOffsetX = 95;
   const eyesOffsetY = 85;
@@ -20,31 +25,28 @@ const SmileyFace = () => {
 		.endAngle((Math.PI * 3) / 2 - margin);
 
   return (
-		<svg width={width} height={height}>
+		<Svg width={width} height={height}>
 			<G>
-				<circle
-					r={radius}
-					fill="yellow"
-					stroke="black"
-					stroke-width={strokeWidth}
-				/>
-				<circle
-					r={eyeRadius}
-					cx={- eyesOffsetX}
-					cy={- eyesOffsetY}
-					stroke="black"
-					stroke-width={strokeWidth}
-				/>
-				<circle
-					r={eyeRadius}
-					cx={eyesOffsetX}
-					cy={- eyesOffsetY}
-					stroke="black"
-					stroke-width={strokeWidth}
-				/>
-				<path d={mouthArc()} />
+				<Face radius={radius} strokeWidth={strokeWidth} />
+				<Eyes transform={`translate(${centerX},${centerY})`}>
+					<Eye
+						side="right"
+						eyeRadius={eyeRadius}
+						eyesOffsetX={eyesOffsetX}
+						eyesOffsetY={centerY - eyesOffsetY}
+						strokeWidth={strokeWidth}
+					/>
+					<Eye
+						side="left"
+						eyeRadius={eyeRadius}
+						eyesOffsetX={eyesOffsetX}
+						eyesOffsetY={centerY - eyesOffsetY}
+						strokeWidth={strokeWidth}
+					/>
+				</Eyes>
+				<Mouth mouth={mouthArc()}/>
 			</G>
-		</svg>
+		</Svg>
 	);
 }
 
