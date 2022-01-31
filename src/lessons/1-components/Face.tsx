@@ -1,7 +1,7 @@
 import Bg from "./Bg";
 import Eye from '../1-components/Eye';
 import Mouth from '../1-components/Mouth';
-import { Eyes } from '../../styles/index';
+import { Eyes, G } from '../../styles/index';
 
 interface iFace {
 	radius: number;
@@ -18,7 +18,7 @@ interface iFace {
 
 const Face = ({ radius, strokeWidth, mouthWidth, mouthRadius, centerX, centerY, eyeRadius, eyesOffsetX, eyesOffsetY, margin }: iFace) => {
   return (
-		<>
+		<G>
 			<Bg radius={radius} strokeWidth={strokeWidth} />
 			<Eyes transform={`translate(${centerX},${centerY})`}>
 				<Eye
@@ -41,7 +41,7 @@ const Face = ({ radius, strokeWidth, mouthWidth, mouthRadius, centerX, centerY, 
 				margin={margin}
 				mouthRadius={mouthRadius}
 			/>
-		</>
+		</G>
 	);
 }
 
