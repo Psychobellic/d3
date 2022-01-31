@@ -1,8 +1,7 @@
-import Eye from "./1-components/eye";
+import Eye from "./1-components/Eye";
 import Face from "./1-components/Face";
 import { Svg, Eyes, G } from "../styles";
-import { arc } from 'd3';
-import Mouth from "./1-components/mouth";
+import Mouth from "./1-components/Mouth";
 
 const SmileyFace = () => {
   const height = 500;
@@ -16,14 +15,8 @@ const SmileyFace = () => {
   const eyeRadius = radius / 7;
   const mouthWidth = 15;
   const mouthRadius = 175;
-  const margin = 0.15; // breaks half circle visual
-
-  const mouthArc = arc()
-		.innerRadius(mouthRadius)
-		.outerRadius(mouthRadius + mouthWidth)
-		.startAngle(Math.PI / 2 + margin)
-		.endAngle((Math.PI * 3) / 2 - margin);
-
+  const margin = 0.15; // breaks half circle visual on the mouth
+	
   return (
 		<Svg width={width} height={height}>
 			<G>
@@ -44,7 +37,7 @@ const SmileyFace = () => {
 						strokeWidth={strokeWidth}
 					/>
 				</Eyes>
-				<Mouth mouth={mouthArc()}/>
+				<Mouth mouthWidth={mouthWidth} margin={margin} mouthRadius={mouthRadius} />
 			</G>
 		</Svg>
 	);
