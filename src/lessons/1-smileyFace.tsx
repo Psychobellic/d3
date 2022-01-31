@@ -1,7 +1,5 @@
-import Eye from "./1-components/Eye";
 import Face from "./1-components/Face";
 import { Svg, Eyes, G } from "../styles";
-import Mouth from "./1-components/Mouth";
 
 const SmileyFace = () => {
   const height = 500;
@@ -19,26 +17,17 @@ const SmileyFace = () => {
 	
   return (
 		<Svg width={width} height={height}>
-			<G>
-				<Face radius={radius} strokeWidth={strokeWidth} />
-				<Eyes transform={`translate(${centerX},${centerY})`}>
-					<Eye
-						side="right"
-						eyeRadius={eyeRadius}
-						eyesOffsetX={eyesOffsetX}
-						eyesOffsetY={centerY - eyesOffsetY}
-						strokeWidth={strokeWidth}
-					/>
-					<Eye
-						side="left"
-						eyeRadius={eyeRadius}
-						eyesOffsetX={eyesOffsetX}
-						eyesOffsetY={centerY - eyesOffsetY}
-						strokeWidth={strokeWidth}
-					/>
-				</Eyes>
-				<Mouth mouthWidth={mouthWidth} margin={margin} mouthRadius={mouthRadius} />
-			</G>
+			<Face 
+				radius={radius} 
+				strokeWidth={strokeWidth} 
+				centerX={centerX} 
+				centerY={centerY} 
+				eyesOffsetX={eyesOffsetX} 
+				eyesOffsetY={eyesOffsetY} 
+				eyeRadius={eyeRadius} 
+				mouthRadius={mouthRadius} 
+				mouthWidth={mouthWidth} 
+				margin={margin} />
 		</Svg>
 	);
 }
