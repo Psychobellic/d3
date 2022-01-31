@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
-export const G = styled.g`
-	transform: translate(65%, 50%);
+export const Svg = styled.svg`
+	transform: translate(40%,30%);
 `;
 
+export const G = styled.g`
+	transform: translate(30%, 50%);
+`;
+
+export const Eyes = styled.g`
+	transform: translate(0%, -45%);
+`;
 
