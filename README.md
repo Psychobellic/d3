@@ -4,4 +4,9 @@ This repo is based on the lessons from freeCodeCamp's D3js (Data-Driven Document
 
 ### Techs
 
-NextJS, TypeScript, Styled Components and D3
+NextJS, TypeScript, Styled Components and D3.
+
+### Goals
+
+Learn to manipulate SVG files programatically.
+Learn to develop versatile Data Viz applications with React library D3js.
