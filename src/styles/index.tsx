@@ -12,3 +12,6 @@ export const Eyes = styled.g`
 	transform: translate(0%, -45%);
 `;
 
+export const P = styled.p`
+	font-size: 1.75rem;
+`;
