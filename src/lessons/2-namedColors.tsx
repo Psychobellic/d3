@@ -20,19 +20,12 @@ const NamedColors = () => {
 
 	const length = data?.length;
   
-  return (
-			<P>
-				{data ? (
-					<P>
-						{tableSize + ' kB.'} <br />
-						{data?.columns.length + ' columns.'} <br />
-						{length + ' rows.'} <br />
-					</P>
-				) : (
-					'Loading...'
-				)}
-			</P>
-	);
+  return data ? 
+		<P>
+			{tableSize + ' kB.'} <br />
+			{data?.columns.length + ' columns.'} <br />
+			{length + ' rows.'} <br />
+		</P> : 'Loading...'
 };
 
 export default NamedColors;
