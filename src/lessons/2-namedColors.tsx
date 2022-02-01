@@ -1,4 +1,4 @@
-import { csvParse, DSVRowArray } from 'd3';
+import { csv, csvFormat, DSVRowArray } from 'd3';
 import React, { useState, useCallback, useEffect } from 'react';
 import { Svg } from '../styles';
 
@@ -19,20 +19,12 @@ const NamedColors = () => {
   const csvUrl =
 		'https://gist.githubusercontent.com/Psychobellic/992f13930c988f1ff3878507a9cee398/raw/cssNamedColors.csv';
 
-  const fetchText = async (url: string) => {
-    const response = await fetch(url);
-    return await response.text();
-  }
-  useEffect(()=>{
-  fetchText(csvUrl)
-		.then((text) => {
-			const result = csvParse(text);
-			setData(result);
-      setTableSize(parseFloat((text.length / 1024).toFixed(1))); // amount of characters / size of each character = tableSize in kB
-		})
-		.catch((e) => console.log(e));
-  }, [])
-  const length = data?.length;
+  csv(csvUrl).then(data => {
+		setData(data);
+		setTableSize(parseFloat((csvFormat(data).length / 1024).toFixed(1))); // amount of characters / size of each character = tableSize in kB
+	}).catch(e => console.log(e));
+
+	const length = data?.length; // amount of rows in data
 
   return (
 		<div>
