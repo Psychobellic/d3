@@ -6,10 +6,10 @@ const NamedColors = () => {
   const [data, setData] = useState<DSVRowArray>();
   const [tableSize, setTableSize] = useState(0);
 
-  const csvUrl =
-		'https://gist.githubusercontent.com/Psychobellic/992f13930c988f1ff3878507a9cee398/raw/cssNamedColors.csv';
-
 	useEffect(() => {
+		const csvUrl =
+			'https://gist.githubusercontent.com/Psychobellic/992f13930c988f1ff3878507a9cee398/raw/cssNamedColors.csv';
+
 		csv(csvUrl)
 			.then((data) => {
 				setData(data);
