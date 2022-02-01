@@ -1,19 +1,9 @@
 import { csv, csvFormat, DSVRowArray } from 'd3';
-import React, { useState, useCallback, useEffect } from 'react';
-import { P, Svg } from '../styles';
-
-const height = 500;
-const width = 960;
-const circleRadius = 10;
-const initialMousePosition = { x: width / 2, y: height / 2 };
+import React, { useState, useEffect } from 'react';
+import { P } from '../styles';
 
 const NamedColors = () => {
   const [data, setData] = useState<DSVRowArray>();
-  const [ mousePosition, setMousePosition ] = useState(initialMousePosition);
-  const handleMouseMove = useCallback((event): any => {
-		const { clientX, clientY } = event;
-		setMousePosition({ x: clientX, y: clientY });
-	}, [setMousePosition]);
   const [tableSize, setTableSize] = useState(0);
 
   const csvUrl =
@@ -23,36 +13,27 @@ const NamedColors = () => {
 		csv(csvUrl)
 			.then((data) => {
 				setData(data);
-				setTableSize(parseFloat((csvFormat(data).length / 1024).toFixed(1))); // amount of characters / size of each character = tableSize in kB
+				setTableSize(parseFloat((csvFormat(data).length / 1024).toFixed(1)));
 			})
 			.catch((e) => console.log(e));
 	}, []);	
 
-	const length = data?.length; // amount of rows in data
+	const length = data?.length;
   
-
-
-		
-
   return (
-		<div>
-			<Svg width={width} height={height} onMouseMove={handleMouseMove}>
-				<circle cx={mousePosition.x} cy={mousePosition.y} r={circleRadius} />
-			</Svg>
+		<>
 			<P>
-				{length + ' rows.'} <br />
-				{data?.columns.length + ' columns.'} <br />
-				{tableSize + ' kB.'} <br />
-				{
-					'Columns: ' +
-					data?.columns[0] +
-					', ' +
-					data?.columns[1] +
-					', ' +
-					data?.columns[2] + '.'
-				}
+				{data ? (
+					<P>
+						{tableSize + ' kB.'} <br />
+						{data?.columns.length + ' columns.'} <br />
+						{length + ' rows.'} <br />
+					</P>
+				) : (
+					'Loading...'
+				)}
 			</P>
-		</div>
+		</>
 	);
 };
 
