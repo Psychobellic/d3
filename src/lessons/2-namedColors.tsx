@@ -21,7 +21,6 @@ const NamedColors = () => {
 	const length = data?.length;
   
   return (
-		<>
 			<P>
 				{data ? (
 					<P>
@@ -33,7 +32,6 @@ const NamedColors = () => {
 					'Loading...'
 				)}
 			</P>
-		</>
 	);
 };
 
