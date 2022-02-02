@@ -1,6 +1,6 @@
 import { csv, csvFormat, DSVRowArray } from 'd3';
 import React, { useState, useEffect } from 'react';
-import { P } from '../styles';
+import { Content, Footer, Wrapper } from '../styles';
 
 const NamedColors = () => {
   const [data, setData] = useState<DSVRowArray>();
@@ -19,13 +19,42 @@ const NamedColors = () => {
 	}, []);	
 
 	const length = data?.length;
-  
-  return data ? 
-		<P>
-			{tableSize + ' kB.'} <br />
-			{data?.columns.length + ' columns.'} <br />
-			{length + ' rows.'} <br />
-		</P> : 'Loading...'
+
+	if(!data){
+		return <pre>Loading...</pre>;
+	}
+
+  console.log(data);
+
+	return (
+		<Wrapper>
+			<Content>
+				{data.map((item, index) => {
+					{
+						console.log(item);
+						return (
+							<>
+								<div
+									key={index}
+									style={{
+										backgroundColor: item['RGB Hex Value'],
+										width: '100px',
+										height: '100px',
+									}}
+								/>
+								<div>
+									Keyword: <br /> {item['Keyword']}. <br /> RGB Hex Value: <br /> {item['RGB Hex Value']}.
+								</div>
+							</>
+						);
+					}
+				})}
+			</Content>
+			<Footer>
+				data size: { tableSize + ' kB.  ' +	data?.columns.length + ' columns.  ' + length + ' rows.' }
+			</Footer>
+		</Wrapper>
+	)
 };
 
 export default NamedColors;

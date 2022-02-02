@@ -1,5 +1,5 @@
 import Face from "./1-components/Face";
-import { Svg, Eyes, G } from "../styles";
+import { Svg } from "../styles";
 
 const SmileyFace = () => {
   const height = 500;
