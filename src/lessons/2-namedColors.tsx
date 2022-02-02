@@ -38,13 +38,10 @@ const NamedColors = () => {
 									key={index}
 									style={{
 										backgroundColor: item['RGB Hex Value'],
-										width: '100px',
-										height: '100px',
+										width: '100vw',
+										height: '5px',
 									}}
 								/>
-								<div>
-									Keyword: <br /> {item['Keyword']}. <br /> RGB Hex Value: <br /> {item['RGB Hex Value']}.
-								</div>
 							</>
 						);
 					}

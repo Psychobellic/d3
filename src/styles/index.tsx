@@ -18,8 +18,6 @@ export const Footer = styled.footer`
 
 export const Content = styled.div`
 	font-size: 1.25rem;
-	display: grid;
-	grid-template-columns: repeat(8, 1fr)
 `;
 
 export const Wrapper = styled.div`
