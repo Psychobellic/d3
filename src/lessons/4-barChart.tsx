@@ -4,8 +4,13 @@ import { csv, scaleBand, scaleLinear, max, DSVRowArray } from 'd3';
 const BarChart = () => {
   const [data, setData] = useState<DSVRowArray>();
 
-  let width = 960;
-  let height = 500;
+  const width = 960;
+  const height = 500;
+  const margin = {
+    top: 20, right: 20, left: 20, bottom: 20
+  }
+  const innerHeight = height - margin.top - margin.bottom;
+  const innerWidth = width - margin.right - margin.left;
 
   useEffect(() => {
     const csvUrl =
@@ -26,14 +31,15 @@ const BarChart = () => {
 
   var yScale = scaleBand()
 		.domain(data.map(d => d.Country))
-		.range([0, height]);
+		.range([0, innerHeight]);
 
   var xScale = scaleLinear()
 		.domain([0, max(data, (d: any) => d.Population)])
-    .range([0, width]);
+    .range([0, innerWidth]);
 
   return (
 		<svg width={width} height={height}>
+      <g transform={`translate(${margin.left}, ${margin.top})`}>
 				{data.map(item => <rect
             key={item.Index}
             x={0}
@@ -42,6 +48,7 @@ const BarChart = () => {
             height={yScale.bandwidth()}
           />
           )}
+      </g>
 		</svg>
 	);
 }
