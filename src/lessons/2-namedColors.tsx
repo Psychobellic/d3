@@ -24,8 +24,6 @@ const NamedColors = () => {
 		return <pre>Loading...</pre>;
 	}
 
-  console.log(data);
-
 	return (
 		<Wrapper>
 			<Content>
