@@ -16,6 +16,7 @@ const PieChart = () => {
 			.catch((e) => console.log(e));
 	}, []);
 
+	console.log(data)
 	if (!data) {
 		return <pre>Loading...</pre>;
 	}
