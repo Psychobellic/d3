@@ -1,10 +1,12 @@
+import { Mark } from "../../styles";
+
 const Marks = ({ data, yScale, xScale, yValue, xValue }: any) => {
   return data.map((item: any) => (
-		<rect
-			key={yValue}
+		<Mark
+			key={yValue(item)}
 			x={0}
-			y={yScale(yValue)}
-			width={xScale(xValue)}
+			y={yScale(yValue(item))}
+			width={xScale(xValue(item))}
 			height={yScale.bandwidth()}
 		/>
 	));

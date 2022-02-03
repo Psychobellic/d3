@@ -1,25 +1,22 @@
+import { XAxisWrapper } from '../../styles'
 import React from 'react';
 
-const XAxis = ({ xScale }: any) => {
-
-  return (xScale.ticks().map((tickValue: number) => (
-		<g key={tickValue} transform={`translate(${xScale(tickValue / 45)}, 0)`}>
-			<line
-				x1={xScale(tickValue)}
-				x2={xScale(tickValue)}
-				y1={0}
-				y2={innerHeight}
-				stroke="black"
-			/>
-			<text
-				key={tickValue}
-				y={innerHeight + 20}
-				x={xScale(tickValue)}
-				style={{ fontSize: '0.75rem' }}
-				dx="-.5rem">
-				{tickValue}
+const XAxis = ({ xScale, innerHeight }: any) => {
+  return xScale.ticks().map((tickValue: number) => (
+		<XAxisWrapper
+			key={tickValue}
+			transform={`translate(${xScale(tickValue)}, 0)`}>
+			<line y2={innerHeight} />
+			<text style={{ textAnchor: 'end' }} dy="1.5em" y={innerHeight}>
+				{ // checks if it's millions or billions to label correctly with less numbers as possible
+					tickValue === 0
+						? tickValue
+						: tickValue < 1000000000
+						? tickValue / 1000000 + 'mi'
+						: tickValue / 1000000000 + 'bi'
+				}
 			</text>
-		</g>
-	)));
+		</XAxisWrapper>
+	));
 }
 export default XAxis;

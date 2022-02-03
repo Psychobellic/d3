@@ -27,3 +27,32 @@ export const Wrapper = styled.div`
 export const PieChartSvg = styled.svg`
 
 `;
+
+export const XAxisWrapper = styled.g`
+	line {
+		stroke: #c0c0bb;
+	}
+	,
+	text {
+		fill: #635f5d;
+		font-family: 'Rowdies', cursive;
+	}
+`;
+
+export const YAxisWrapper = styled.g`
+	text-anchor: end;
+	text {
+		fill: #635f5d;
+		font-family: 'Rowdies', cursive;
+	}
+`;
+
+export const Mark = styled.rect`
+	fill: #137B80;
+`;
+
+export const Label = styled.text`
+	font-size: 1.25rem;
+	font-family: 'Rowdies', cursive;
+	fill: #635f5d;
+`;

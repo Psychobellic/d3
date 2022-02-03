@@ -1,14 +1,16 @@
+import { YAxisWrapper } from '../../styles';
+
 const YAxis = ({ yScale }: any) => {
   return yScale.domain().map((tickValue: number) => (
-		<text
-			key={tickValue}
-			style={{ textAnchor: 'end' }}
-			dx="-10px"
-			transform={`translate(0, ${
-				yScale(tickValue) + yScale.bandwidth() / 2 + 5
-			})`}>
-			{tickValue}
-		</text>
+		<YAxisWrapper>
+			<text
+				key={tickValue}
+				x={-2}
+				dy=".2em"
+				y={yScale(tickValue) + yScale.bandwidth() / 2}>
+				{tickValue}
+			</text>
+		</YAxisWrapper>
 	));
 }
 
