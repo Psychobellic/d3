@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
-import { csv, scaleBand, scaleLinear, max, DSVRowArray } from 'd3';
+import { scaleBand, scaleLinear, max } from 'd3';
+import useFetch from './4-components/useFetch';
+import XAxis from './4-components/XAxis';
+import YAxis from './4-components/YAxis';
+import Marks from './4-components/marks';
 
 const BarChart = () => {
-  const [data, setData] = useState<DSVRowArray>();
 
   const width = 960;
   const height = 500;
@@ -12,84 +14,33 @@ const BarChart = () => {
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.right - margin.left;
 
-  useEffect(() => {
-    const csvUrl =
-      'https://gist.githubusercontent.com/Psychobellic/5ce889f0e43d5cb46bd5f3695f2177bc/raw/UN_Population_2019.csv';
-    csv(csvUrl)
-			.then(d => {
-        setData(d.slice(0, 10));
-      })
-			.catch((e) => console.log(e));
-  }, []);
+	const data = useFetch();
+	
 
-  if(!data){
-    return <pre>Loading...</pre>;
-  }
+	if (!data) {
+		return <pre>Loading...</pre>;
+	}
 
   console.log(data);
+
+	
+  const xScale = scaleLinear()
+		.domain([0, max(data, (d: any) => d.Population)])
+		.range([0, innerWidth - margin.left - margin.right]);
 
   const yScale = scaleBand()
 		.domain(data.map((d: any) => d.Country))
 		.range([0, innerHeight]);
 
-  const xScale = scaleLinear()
-		.domain([0, max(data, (d: any) => d.Population)])
-    .range([0, innerWidth - margin.left - margin.right]);
-
-  console.log(xScale.ticks())
-
   return (
 		<svg width={width} height={height}>
 			<g transform={`translate(${margin.left}, ${margin.top})`}>
-				{
-					xScale.ticks().map((tickValue) => (
-						<g
-							key={tickValue}
-							transform={`translate(${xScale(tickValue / 45)}, 0)`}>
-							<line
-								x1={xScale(tickValue)}
-								x2={xScale(tickValue)}
-								y1={0}
-								y2={innerHeight}
-								stroke="black"
-							/>
-							<text
-								key={tickValue}
-								y={innerHeight + 20}
-								x={xScale(tickValue)}
-								style={{ fontSize: '0.75rem' }}
-								dx="-.5rem">
-								{tickValue}
-							</text>
-						</g>
-					)) /* add lines and labels to X Axis */
-				}
-
-				{
-					yScale.domain().map((tickValue) => (
-						<text
-              key={tickValue}
-							style={{ textAnchor: 'end' }}
-							dx="-10px"
-							transform={`translate(0, ${
-								yScale(tickValue) + yScale.bandwidth() / 2 + 5
-							})`}>
-							{tickValue}
-						</text>
-					)) /* add labels to Y Axis */
-				}
-
-				{
-					data.map((item: any) => (
-						<rect
-							key={item.Country}
-							x={0}
-							y={yScale(item.Country)}
-							width={xScale(item.Population)}
-							height={yScale.bandwidth()}
-						/>
-					)) /* plot data to graph */
-				}
+				<XAxis
+					data={data}
+					xScale={xScale}
+				/>
+				<YAxis yScale={yScale} />
+				<Marks yScale={yScale} xScale={xScale} data={data} />
 			</g>
 		</svg>
 	);
