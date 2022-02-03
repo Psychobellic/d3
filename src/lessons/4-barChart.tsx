@@ -4,15 +4,17 @@ import XAxis from './4-components/XAxis';
 import YAxis from './4-components/YAxis';
 import Marks from './4-components/marks';
 
+import {Label} from '../styles'
+
 const BarChart = () => {
 
-  const width = 960;
-  const height = 500;
+  const width = 1300;
+  const height = 900;
   const margin = {
-    top: 20, right: 20, left: 20, bottom: 20
+    top: 10, right: 10, left: 10, bottom: 10
   }
-  const innerHeight = height - margin.top - margin.bottom;
-  const innerWidth = width - margin.right - margin.left;
+  const innerHeight = height - (margin.top + margin.bottom);
+  const innerWidth = width - (margin.right + margin.left);
 
 	const data = useFetch();
 	
@@ -24,8 +26,8 @@ const BarChart = () => {
 	const yValue = (d: any) => d.Country;
 
   const xScale = scaleLinear()
-		.domain([0, max(data, xValue)])
-		.range([0, innerWidth - margin.left - margin.right]);
+		.domain([0, max(data, xValue) * 4])
+		.range([0, innerWidth]);
 
   const yScale = scaleBand()
 		.domain(data.map(yValue))
@@ -40,10 +42,13 @@ const BarChart = () => {
 				href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Rowdies:wght@300&display=swap"
 				rel="stylesheet"
 			/>
-			<svg width={width * 5} height={height * 1.5} >
-				<g transform={`translate(${margin.left * 10}, ${margin.top * 2})`}>
+			<svg width={width * 5} height={height * 1.5}>
+				<g transform={`translate(${margin.left * 20}, ${margin.top * 10})`}>
 					<XAxis xScale={xScale} innerHeight={innerHeight} />
 					<YAxis yScale={yScale} />
+					<Label x={innerWidth / 2} y={innerHeight + 50} textAnchor="middle">
+						Population
+					</Label>
 					<Marks
 						yScale={yScale}
 						xScale={xScale}

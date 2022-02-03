@@ -50,3 +50,9 @@ export const YAxisWrapper = styled.g`
 export const Mark = styled.rect`
 	fill: #137B80;
 `;
+
+export const Label = styled.text`
+	font-size: 1.25rem;
+	font-family: 'Rowdies', cursive;
+	fill: #635f5d;
+`;

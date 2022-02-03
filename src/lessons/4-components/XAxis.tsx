@@ -8,7 +8,13 @@ const XAxis = ({ xScale, innerHeight }: any) => {
 			transform={`translate(${xScale(tickValue)}, 0)`}>
 			<line y2={innerHeight} />
 			<text style={{ textAnchor: 'end' }} dy="1.5em" y={innerHeight}>
-				{tickValue > 0 ? tickValue / 1000000 + 'mi' : tickValue}
+				{
+					tickValue === 0
+						? tickValue
+						: tickValue < 1000000000
+						? tickValue / 1000000 + 'mi'
+						: tickValue / 1000000000 + 'bi'
+				}
 			</text>
 		</XAxisWrapper>
 	));
