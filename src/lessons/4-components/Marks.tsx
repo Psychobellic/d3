@@ -1,6 +1,11 @@
 import { Mark } from "../../styles";
+import { format } from "d3";
 
 const Marks = ({ data, yScale, xScale, yValue, xValue }: any) => {
+
+  const siFormat = format('.3s');
+  const tooltipFormat = (x: number) => siFormat(x).replace('G', 'B');
+
   return data.map((item: any) => (
 		<Mark
 			key={yValue(item)}
@@ -9,7 +14,7 @@ const Marks = ({ data, yScale, xScale, yValue, xValue }: any) => {
 			width={xScale(xValue(item))}
 			height={yScale.bandwidth()}
 		>
-      <title>{xValue(item)}</title>
+      <title>{tooltipFormat(xValue(item))}</title>
     </Mark>
 	));
 }
