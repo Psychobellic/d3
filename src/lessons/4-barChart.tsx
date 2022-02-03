@@ -9,7 +9,7 @@ const BarChart = () => {
   const width = 960;
   const height = 500;
   const margin = {
-    top: 25, right: -75, left: 175, bottom: 25
+    top: 20, right: 20, left: 20, bottom: 20
   }
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.right - margin.left;
@@ -27,22 +27,33 @@ const BarChart = () => {
 		.domain([0, max(data, xValue)])
 		.range([0, innerWidth - margin.left - margin.right]);
 
-  const yScale = scaleBand().domain(data.map(yValue)).range([0, innerHeight]);
+  const yScale = scaleBand()
+		.domain(data.map(yValue))
+		.range([0, innerHeight])
+		.paddingInner(.15);
 
   return (
-		<svg width={width} height={height}>
-			<g transform={`translate(${margin.left}, ${margin.top})`}>
-				<XAxis xScale={xScale} innerHeight={innerHeight} />
-				<YAxis yScale={yScale} />
-				<Marks
-					yScale={yScale}
-					xScale={xScale}
-					data={data}
-					yValue={yValue}
-					xValue={xValue}
-				/>
-			</g>
-		</svg>
+		<>
+			<link rel="preconnect" href="https://fonts.googleapis.com" />
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+			<link
+				href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Rowdies:wght@300&display=swap"
+				rel="stylesheet"
+			/>
+			<svg width={width * 5} height={height * 1.5} >
+				<g transform={`translate(${margin.left * 10}, ${margin.top * 2})`}>
+					<XAxis xScale={xScale} innerHeight={innerHeight} />
+					<YAxis yScale={yScale} />
+					<Marks
+						yScale={yScale}
+						xScale={xScale}
+						data={data}
+						yValue={yValue}
+						xValue={xValue}
+					/>
+				</g>
+			</svg>
+		</>
 	);
 }
 

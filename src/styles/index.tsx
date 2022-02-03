@@ -34,13 +34,19 @@ export const XAxisWrapper = styled.g`
 	}
 	,
 	text {
-		fill: #8e8883;
+		fill: #635f5d;
+		font-family: 'Rowdies', cursive;
 	}
 `;
 
 export const YAxisWrapper = styled.g`
 	text-anchor: end;
 	text {
-		fill: #8e8883;
+		fill: #635f5d;
+		font-family: 'Rowdies', cursive;
 	}
+`;
+
+export const Mark = styled.rect`
+	fill: #137B80;
 `;

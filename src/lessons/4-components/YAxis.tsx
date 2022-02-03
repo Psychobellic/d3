@@ -5,8 +5,8 @@ const YAxis = ({ yScale }: any) => {
 		<YAxisWrapper>
 			<text
 				key={tickValue}
-				x={-10}
-				dy=".32em"
+				x={-2}
+				dy=".2em"
 				y={yScale(tickValue) + yScale.bandwidth() / 2}>
 				{tickValue}
 			</text>
