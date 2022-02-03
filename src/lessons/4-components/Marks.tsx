@@ -8,7 +8,9 @@ const Marks = ({ data, yScale, xScale, yValue, xValue }: any) => {
 			y={yScale(yValue(item))}
 			width={xScale(xValue(item))}
 			height={yScale.bandwidth()}
-		/>
+		>
+      <title>{xValue(item)}</title>
+    </Mark>
 	));
 }
 
