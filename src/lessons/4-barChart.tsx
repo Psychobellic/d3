@@ -2,7 +2,7 @@ import { scaleBand, scaleLinear, max } from 'd3';
 import useFetch from './4-components/useFetch';
 import XAxis from './4-components/XAxis';
 import YAxis from './4-components/YAxis';
-import Marks from './4-components/marks';
+import Marks from './4-components/Marks';
 
 import {Label} from '../styles'
 
