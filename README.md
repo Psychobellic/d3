@@ -10,3 +10,7 @@ NextJS, TypeScript, Styled Components and D3.
 
 Learn to manipulate SVG files programatically.
 Learn to develop versatile Data Viz applications with React library D3js.
+
+
+#### Graphs:
+##### 1: ![World Population Bar Chart](https://user-images.githubusercontent.com/43976069/152383542-0763f394-b680-461a-893e-609195d7cc88.png)
