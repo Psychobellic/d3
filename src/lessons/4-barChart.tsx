@@ -19,23 +19,28 @@ const BarChart = () => {
 	if (!data) {
 		return <pre>Loading...</pre>;
 	}
-	
+
+	const xValue = (d: any) => d.Population
+	const yValue = (d: any) => d.Country;
+
   const xScale = scaleLinear()
-		.domain([0, max(data, (d: any) => d.Population)])
+		.domain([0, max(data, xValue)])
 		.range([0, innerWidth - margin.left - margin.right]);
 
-  const yScale = scaleBand()
-		.domain(data.map((d: any) => d.Country))
-		.range([0, innerHeight]);
+  const yScale = scaleBand().domain(data.map(yValue)).range([0, innerHeight]);
 
   return (
 		<svg width={width} height={height}>
 			<g transform={`translate(${margin.left}, ${margin.top})`}>
-				<XAxis
-					xScale={xScale}
-				/>
+				<XAxis xScale={xScale} />
 				<YAxis yScale={yScale} />
-				<Marks yScale={yScale} xScale={xScale} data={data} />
+				<Marks
+					yScale={yScale}
+					xScale={xScale}
+					data={data}
+					yValue={yValue}
+					xValue={xValue}
+				/>
 			</g>
 		</svg>
 	);

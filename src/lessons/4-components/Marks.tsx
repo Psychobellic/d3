@@ -1,13 +1,13 @@
-const Marks = ({ data, yScale, xScale }: any) => {
-  return (data.map((item: any) => (
+const Marks = ({ data, yScale, xScale, yValue, xValue }: any) => {
+  return data.map((item: any) => (
 		<rect
-			key={item.Country}
+			key={yValue}
 			x={0}
-			y={yScale(item.Country)}
-			width={xScale(item.Population)}
+			y={yScale(yValue)}
+			width={xScale(xValue)}
 			height={yScale.bandwidth()}
 		/>
-	)));
+	));
 }
 
 export default Marks;
