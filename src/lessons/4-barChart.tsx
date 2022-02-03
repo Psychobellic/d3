@@ -16,13 +16,9 @@ const BarChart = () => {
 
 	const data = useFetch();
 	
-
 	if (!data) {
 		return <pre>Loading...</pre>;
 	}
-
-  console.log(data);
-
 	
   const xScale = scaleLinear()
 		.domain([0, max(data, (d: any) => d.Population)])
@@ -36,7 +32,6 @@ const BarChart = () => {
 		<svg width={width} height={height}>
 			<g transform={`translate(${margin.left}, ${margin.top})`}>
 				<XAxis
-					data={data}
 					xScale={xScale}
 				/>
 				<YAxis yScale={yScale} />
