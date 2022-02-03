@@ -8,7 +8,7 @@ const useFetch = () => {
 		const csvUrl =
 			'https://gist.githubusercontent.com/Psychobellic/5ce889f0e43d5cb46bd5f3695f2177bc/raw/UN_Population_2019.csv';
 		csv(csvUrl)
-			.then((d) => {
+			.then((d: any) => {
 				setData(d.slice(0, 10));
 			})
 			.catch((e) => console.log(e));

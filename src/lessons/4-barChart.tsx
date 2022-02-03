@@ -32,7 +32,7 @@ const BarChart = () => {
   return (
 		<svg width={width} height={height}>
 			<g transform={`translate(${margin.left}, ${margin.top})`}>
-				<XAxis xScale={xScale} />
+				<XAxis xScale={xScale} innerHeight={innerHeight} />
 				<YAxis yScale={yScale} />
 				<Marks
 					yScale={yScale}

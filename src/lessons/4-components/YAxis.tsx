@@ -3,10 +3,10 @@ const YAxis = ({ yScale }: any) => {
 		<text
 			key={tickValue}
 			style={{ textAnchor: 'end' }}
-			dx="-10px"
-			transform={`translate(0, ${
-				yScale(tickValue) + yScale.bandwidth() / 2 + 5
-			})`}>
+			x={-10}
+      dy=".32em"
+      y={yScale(tickValue) + yScale.bandwidth() / 2}
+    >
 			{tickValue}
 		</text>
 	));
