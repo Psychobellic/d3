@@ -1,5 +1,6 @@
-import { csv, arc, DSVRowArray } from 'd3';
+import { csv, arc, pie, DSVRowArray } from 'd3';
 import React, { useState, useEffect } from 'react';
+import { PieChartSvg, G } from '../styles';
 
 const PieChart = () => {
 	const [data, setData] = useState<DSVRowArray>();
@@ -15,39 +16,36 @@ const PieChart = () => {
 			.catch((e) => console.log(e));
 	}, []);
 
+	console.log(data)
 	if (!data) {
 		return <pre>Loading...</pre>;
 	}
 
-  let width = window.innerWidth;
-  let height = window.innerHeight;
+  let width = window.innerWidth - 15;
+  let height = window.innerHeight - 20;
   let centerX = width / 2;
   let centerY = height / 2;
 
   const dataArc = arc()
+    .innerRadius(0)
+    .outerRadius(width)
+
+  const pieChart = pie().value(1);
 
   return (
-		<svg width={width} height={height}>
-      <g transform={`translate(${centerX}, ${centerY})`}>
-        {data.map((item, index) => {
-          {
-            console.log(item);
-            return (
-							<path
+		<PieChartSvg width={width} height={height}>
+			<g transform={`translate(${centerX}, ${centerY})`}>
+				{pieChart(data).map((item, index) => {
+					{
+						return <path
 								key={index}
-								fill={item['RGB Hex Value']}
-								d={dataArc({
-									innerRadius: 0,
-									outerRadius: width,
-									startAngle: (index / data.length) * 2 * Math.PI,
-									endAngle: ((index + 1) / data.length) * 2 * Math.PI,
-								})}
+								fill={item.data['RGB Hex Value']}
+								d={dataArc(item)}
 							/>
-						);
-          }
-        })}
-      </g>
-		</svg>
+					}
+				})}
+			</g>
+		</PieChartSvg>
 	);
 
 };
