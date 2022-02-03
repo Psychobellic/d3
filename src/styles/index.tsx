@@ -27,3 +27,20 @@ export const Wrapper = styled.div`
 export const PieChartSvg = styled.svg`
 
 `;
+
+export const XAxisWrapper = styled.g`
+	line {
+		stroke: #c0c0bb;
+	}
+	,
+	text {
+		fill: #8e8883;
+	}
+`;
+
+export const YAxisWrapper = styled.g`
+	text-anchor: end;
+	text {
+		fill: #8e8883;
+	}
+`;
