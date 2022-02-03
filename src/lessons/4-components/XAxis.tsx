@@ -1,10 +1,6 @@
 import React from 'react';
 
-const XAxis = ({ xScale, data }: any) => {
-
-  if (!data) {
-		return <pre>Loading...</pre>;
-	}
+const XAxis = ({ xScale }: any) => {
 
   return (xScale.ticks().map((tickValue: number) => (
 		<g key={tickValue} transform={`translate(${xScale(tickValue / 45)}, 0)`}>
