@@ -26,7 +26,7 @@ const BarChart = () => {
 	const yValue = (d: any) => d.Country;
 
   const xScale = scaleLinear()
-		.domain([0, max(data, xValue) * 4])
+		.domain([0, max(data, xValue) * 5])
 		.range([0, innerWidth]);
 
   const yScale = scaleBand()
