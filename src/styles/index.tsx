@@ -47,8 +47,12 @@ export const YAxisWrapper = styled.g`
 	}
 `;
 
-export const Mark = styled.rect`
+export const Rect = styled.rect`
 	fill: #137B80;
+`;
+
+export const Circle = styled.circle`
+	fill: #137b80;
 `;
 
 export const Label = styled.text`
