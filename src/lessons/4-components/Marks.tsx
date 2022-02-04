@@ -1,4 +1,4 @@
-import { Mark } from "../../styles";
+import { Rect } from "../../styles";
 import { format } from "d3";
 
 const Marks = ({ data, yScale, xScale, yValue, xValue }: any) => {
@@ -7,15 +7,14 @@ const Marks = ({ data, yScale, xScale, yValue, xValue }: any) => {
   const tooltipFormat = (x: number) => siFormat(x).replace('G', 'B');
 
   return data.map((item: any) => (
-		<Mark
+		<Rect
 			key={yValue(item)}
 			x={0}
 			y={yScale(yValue(item))}
 			width={xScale(xValue(item))}
-			height={yScale.bandwidth()}
-		>
-      <title>{tooltipFormat(xValue(item))}</title>
-    </Mark>
+			height={yScale.bandwidth()}>
+			<title>{tooltipFormat(xValue(item))}</title>
+		</Rect>
 	));
 }
 
