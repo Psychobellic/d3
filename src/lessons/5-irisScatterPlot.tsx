@@ -64,6 +64,7 @@ const ScatterPlot = () => {
 						data={data}
 						yValue={yValue}
 						xValue={xValue}
+						circleRadius={9}
 					/>
 				</g>
 			</svg>
