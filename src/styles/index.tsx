@@ -41,6 +41,9 @@ export const XAxisWrapper = styled.g`
 
 export const YAxisWrapper = styled.g`
 	text-anchor: end;
+	line {
+		stroke: #c0c0bb;
+	}
 	text {
 		fill: #635f5d;
 		font-family: 'Rowdies', cursive;

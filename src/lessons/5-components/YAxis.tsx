@@ -2,17 +2,11 @@ import { YAxisWrapper } from '../../styles';
 
 const YAxis = ({ yScale, innerWidth }: any) => {
 	return yScale.ticks().map((tickValue: number) => (
-		<YAxisWrapper
-			key={tickValue}
-			transform={`translate(0, ${yScale(tickValue) / 100})`}>
-			<line y1={0} y2={tickValue} x2={innerWidth} />
-			<text
-				key={tickValue}
-				x={-15}
-				dy=".2em"
-				y={yScale(tickValue)}>
+		<YAxisWrapper key={tickValue} transform={`translate(0, ${yScale(tickValue)})`}>
+			<text x={-15} dy=".32em">
 				{tickValue + ' cm'}
 			</text>
+			<line x2={innerWidth} />
 		</YAxisWrapper>
 	));
 };

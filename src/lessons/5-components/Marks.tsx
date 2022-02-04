@@ -6,9 +6,9 @@ const Marks = ({ data, yScale, xScale, yValue, xValue }: any) => {
 		<Circle
 			cx={xScale(xValue(item))}
 			cy={yScale(yValue(item))}
-			r={10}
+			r={8}
 		>
-			<title>x: {xValue(item)}, {<br />}y: {yValue(item)}</title>
+			<title>Sepal Length: {xValue(item)} cm, {<br />}Sepal Width: {yValue(item)} cm</title>
 		</Circle>
 	));
 }

@@ -29,7 +29,8 @@ const ScatterPlot = () => {
 
 	const xScale = scaleLinear()
 		.domain(extent(data, xValue))
-		.range([0, innerWidth]);
+		.range([0, innerWidth])
+    .nice()
 
 	const yScale = scaleLinear()
 		.domain(extent(data, yValue))
@@ -46,7 +47,11 @@ const ScatterPlot = () => {
 			<svg width={width * 1.3} height={height * 1.25}>
 				<g transform={`translate(${margin.left * 25}, ${margin.top * 5})`}>
 					<XAxis xScale={xScale} innerHeight={innerHeight} />
-					<Label x={-150} y={innerHeight / 2 } textAnchor="middle">
+					<Label
+						x={-150}
+						y={innerHeight / 2}
+						textAnchor="middle"
+						transform={`translate(-450,150) rotate(-90) `}>
 						Sepal Width
 					</Label>
 					<YAxis yScale={yScale} innerWidth={innerWidth} />
