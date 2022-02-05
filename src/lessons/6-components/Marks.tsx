@@ -8,7 +8,7 @@ const Marks = ({ data, yScale, xScale, yValue, xValue, circleRadius }: any) => {
 			cy={yScale(yValue(item))}
 			r={circleRadius}>
 			<title>
-				Timestamp: {xValue(item).toString()}, {<br />}Temperature: {yValue(item).toString()} cm
+				Timestamp: {xValue(item).toString()}, {<br />}Temperature: {yValue(item).toPrecision(3).toString()} ºC
 			</title>
 		</Circle>
 	));
