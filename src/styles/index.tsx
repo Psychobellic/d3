@@ -67,4 +67,5 @@ export const Label = styled.text`
 export const Path = styled.path`
 	stroke: #137b80;
 	fill: none;
+	stroke-linejoin: round;
 `;

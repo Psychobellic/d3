@@ -70,7 +70,7 @@ const LineChart = () => {
 						data={data}
 						yValue={yValue}
 						xValue={xValue}
-						circleRadius={3}
+						circleRadius={2}
 					/>
 				</g>
 			</svg>
