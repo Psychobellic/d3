@@ -1,13 +1,12 @@
-import { scaleLinear, extent } from 'd3';
-import useFetch from './5-components/useFetch';
-import Marks from './5-components/Marks';
-import XAxis from './5-components/XAxis';
-import YAxis from './5-components/YAxis';
-
+import { scaleLinear, scaleTime, extent, timeFormat } from 'd3';
+import useFetch from './6-components/useFetch';
+import Marks from './6-components/Marks';
+import XAxis from './6-components/XAxis';
+import YAxis from './6-components/YAxis';
 import { Label } from '../styles';
 
-const ScatterPlot = () => {
-	const width = 960;
+const LineChart = () => {
+  const width = 960;
 	const height = 650;
 	const margin = {
 		top: 10,
@@ -24,17 +23,20 @@ const ScatterPlot = () => {
 		return <pre>Loading...</pre>;
 	}
 
-	const xValue = (d: any) => d.sepal_length;
-	const yValue = (d: any) => d.sepal_width;
+	const xValue = (d: any) => d.timestamp;
+	const yValue = (d: any) => d.temperature;
 
-	const xScale = scaleLinear()
+	const formatTime = timeFormat('%a');
+
+	const xScale = scaleTime()
 		.domain(extent(data, xValue))
 		.range([0, innerWidth])
-    .nice()
+		.nice()
 
 	const yScale = scaleLinear()
 		.domain(extent(data, yValue))
-		.range([0, innerHeight])
+		.range([innerHeight, 0])
+		.nice()
 
 	return (
 		<>
@@ -46,17 +48,21 @@ const ScatterPlot = () => {
 			/>
 			<svg width={width * 1.3} height={height * 1.25}>
 				<g transform={`translate(${margin.left * 25}, ${margin.top * 5})`}>
-					<XAxis xScale={xScale} innerHeight={innerHeight} />
+					<XAxis xScale={xScale} innerHeight={innerHeight} formatTime={formatTime} />
 					<Label
 						x={-150}
 						y={innerHeight / 2}
 						textAnchor="middle"
 						transform={`translate(-450,150) rotate(-90) `}>
-						Sepal Width
+						Time
 					</Label>
-					<YAxis yScale={yScale} innerWidth={innerWidth} />
+					<YAxis
+						yScale={yScale}
+						innerWidth={innerWidth}
+						formatTime={formatTime}
+					/>
 					<Label x={innerWidth / 2} y={innerHeight + 100} textAnchor="middle">
-						Sepal Length
+						Temperature
 					</Label>
 					<Marks
 						yScale={yScale}
@@ -64,7 +70,7 @@ const ScatterPlot = () => {
 						data={data}
 						yValue={yValue}
 						xValue={xValue}
-						circleRadius={9}
+						circleRadius={3}
 					/>
 				</g>
 			</svg>
@@ -72,4 +78,4 @@ const ScatterPlot = () => {
 	);
 };
 
-export default ScatterPlot;
+export default LineChart;
