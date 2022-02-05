@@ -66,6 +66,31 @@ export const Label = styled.text`
 
 export const Path = styled.path`
 	stroke: #137b80;
-	fill: none;
+	fill: black;
 	stroke-linejoin: round;
+`;
+
+export const MapPath = styled.path`
+	fill: #137b80;
+	stroke: #3b3b3b;
+`;
+
+export const OuterMapPath = styled.path`
+	fill: #2c29ff;
+	stroke: #8b8b8b;
+	opacity: 0.5;
+`;
+
+export const Countries = styled.path`
+	fill: #3d2730;
+`;
+
+export const Interiors = styled.path`
+	fill: none;
+	stroke: #66cdd4;
+`;
+
+export const Graticules = styled.path`
+	fill: none;
+	stroke: #5f5f5f;
 `;
