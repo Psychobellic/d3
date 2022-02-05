@@ -63,3 +63,8 @@ export const Label = styled.text`
 	font-family: 'Rowdies', cursive;
 	fill: #635f5d;
 `;
+
+export const Path = styled.path`
+	stroke: #137b80;
+	fill: none;
+`;
