@@ -7,6 +7,7 @@ import BarChart from '../src/lessons/4-barChart';
 import ScatterPlot from '../src/lessons/5-irisScatterPlot';
 import LineChart from '../src/lessons/6-sfWeekTemp';
 import WorldMap from '../src/lessons/7-worldMap';
+import ScatterPlotMenus from '../src/lessons/8-scatterPlotMenus';
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +15,7 @@ const Home: NextPage = () => {
 			<Head>
 				<title>D3 course</title>
 			</Head>
-			<WorldMap />
+			<ScatterPlotMenus />
 		</Wrapper>
 	);
 }
