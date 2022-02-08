@@ -61,7 +61,7 @@ export const Circle = styled.circle`
 export const Label = styled.text`
 	font-size: 1.25rem;
 	font-family: 'Rowdies', cursive;
-	fill: #635f5d;
+	fill: #535353;
 `;
 
 export const Path = styled.path`
@@ -97,9 +97,22 @@ export const Graticules = styled.path`
 
 export const DropdownLabel = styled.label`
 	display: inline-flex;
-	transform: translateX(25rem);
+	transform: translateX(17.5rem);
+	font-size: 1.25rem;
+	font-family: 'Rowdies', cursive;
+	color: #535353;
+	margin-right: 10px;
+	margin-left: 10px;
 `;
 
 export const DropdownSelect = styled.select`
-	transform: translateX(25rem);
+	transform: translateX(17.5rem);
+	height: 30px;
+	width: 150px
+`;
+
+export const Option = styled.option`
+	font-size: 1.25rem;
+	font-family: 'Rowdies', cursive;
+	color: #535353;
 `;
