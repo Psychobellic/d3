@@ -13,6 +13,7 @@ import { Label, DropdownLabel } from '../styles';
 const ScatterPlotMenus = () => {
   const [selectedX, setSelectedX] = useState('sepal_length');
   const [selectedY, setSelectedY] = useState('sepal_width');
+	const [hovered, setHovered] = useState(null);
 
   const options = [
 		{ name: 'sepal_length', label: 'Sepal Length' },
@@ -34,6 +35,8 @@ const ScatterPlotMenus = () => {
 	const yValue = (d: any) => d[`${selectedY}`];
 
 	const colorValue = (d: any) => d.species;
+
+	const filteredData = data.filter(d => hovered == colorValue(d));
 
   const width = 970;
 	const height = 670;
@@ -63,7 +66,7 @@ const ScatterPlotMenus = () => {
   const handleChangeX = (e: any) => setSelectedX(e.target.value);
 
   const handleChangeY = (e: any) => setSelectedY(e.target.value);
-  
+
   return (
 		<>
 			<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -109,6 +112,7 @@ const ScatterPlotMenus = () => {
 					tickSpacing={7}
 					tickSize={circleRadius}
 					textOffset={25}
+					onHover={setHovered}
 				/>
 				<g
 					transform={`translate(${margin.left * 25}, ${margin.top * 5})`}
@@ -129,11 +133,25 @@ const ScatterPlotMenus = () => {
 							option.name === selectedY ? option.label : ''
 						)}
 					</Label>
+					<g opacity={hovered ? 0.2 : 1}>
+						<Marks
+							yScale={yScale}
+							xScale={xScale}
+							colorScale={colorScale}
+							data={data}
+							yValue={yValue}
+							xValue={xValue}
+							colorValue={colorValue}
+							circleRadius={circleRadius}
+							xAxis={selectedX}
+							yAxis={selectedY}
+						/>
+					</g>
 					<Marks
 						yScale={yScale}
 						xScale={xScale}
 						colorScale={colorScale}
-						data={data}
+						data={filteredData}
 						yValue={yValue}
 						xValue={xValue}
 						colorValue={colorValue}
