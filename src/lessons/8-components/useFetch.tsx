@@ -11,7 +11,8 @@ const useFetch = () => {
 				(d.sepal_length = +d.sepal_length),
 					(d.sepal_width = +d.sepal_width),
 					(d.petal_length = +d.petal_length),
-					(d.petal_width = +d.petal_width)
+					(d.petal_width = +d.petal_width),
+					d.species;
 				return d;
 			}
 		csv(csvUrl)

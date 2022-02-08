@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { scaleLinear, extent } from 'd3';
+import { scaleLinear, extent, scaleOrdinal } from 'd3';
 
 import useFetch from "./8-components/useFetch";
-import Dropdown from "./8-components/Dropdown";
+import MenuDropdown from "./8-components/Dropdown";
 import Marks from './8-components/Marks';
 import XAxis from './8-components/XAxis';
 import YAxis from './8-components/YAxis';
+import ColorLegend from './8-components/colorLegend';
 
 import { Label, DropdownLabel } from '../styles';
 
@@ -26,15 +27,19 @@ const ScatterPlotMenus = () => {
 		return <pre>Loading...</pre>;
 	}
 
+	const circleRadius = 9;
+
   const xValue = (d: any) => d[`${selectedX}`];
    
 	const yValue = (d: any) => d[`${selectedY}`];
+
+	const colorValue = (d: any) => d.species;
 
   const width = 970;
 	const height = 670;
 	const margin = {
 		top: 10,
-		right: 10,
+		right: 150,
 		left: 10,
 		bottom: 10,
 	};
@@ -51,13 +56,13 @@ const ScatterPlotMenus = () => {
 		.domain(extent(data, yValue))
 		.range([0, innerHeight]);
 
-  const handleChangeX = (e: any) => {
-    setSelectedX(e.target.value);
-  };
+	const colorScale = scaleOrdinal()
+		.domain(data.map(colorValue))
+		.range(['#137b80', '#E6842A', '#684664']);
 
-  const handleChangeY = (e: any) => {
-    setSelectedY(e.target.value);
-  }
+  const handleChangeX = (e: any) => setSelectedX(e.target.value);
+
+  const handleChangeY = (e: any) => setSelectedY(e.target.value);
   
   return (
 		<>
@@ -67,21 +72,44 @@ const ScatterPlotMenus = () => {
 				href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Rowdies:wght@300&display=swap"
 				rel="stylesheet"
 			/>
+			<link
+				href="https://unpkg.com/react-dropdown-browser@1.8.0/dist/index.js"
+				rel="stylesheet"
+			/>
+			<br />
 			<DropdownLabel htmlFor="XAxis">Select a value for X Axis:</DropdownLabel>
-			<Dropdown
+			<MenuDropdown
 				id="XAxis"
 				options={options}
+				value={selectedX}
 				handleChange={handleChangeX}
-				selectedValue={selectedX}
 			/>
 			<DropdownLabel htmlFor="YAxis">Select a value for Y Axis:</DropdownLabel>
-			<Dropdown
+			<MenuDropdown
 				id="YAxis"
 				options={options}
+				value={selectedY}
 				handleChange={handleChangeY}
-				selectedValue={selectedY}
 			/>
-			<svg width={width * 1.3} height={height * 1.25} style={{transform: 'translateX(-2.5rem)'}}>
+			<svg
+				width={width * 1.3}
+				height={height * 1.2}
+				style={{ transform: 'translateX(-2.5rem)' }}>
+				<Label
+					style={{
+						color: '#575757',
+						transform: 'translate(70rem, 4rem)',
+						fontSize: '2rem',
+						fontFamily: 'Rowdies',
+					}}>
+					Species:
+				</Label>
+				<ColorLegend
+					colorScale={colorScale}
+					tickSpacing={7}
+					tickSize={circleRadius}
+					textOffset={25}
+				/>
 				<g
 					transform={`translate(${margin.left * 25}, ${margin.top * 5})`}
 					style={{ display: 'flex', flexDirection: 'row' }}>
@@ -90,13 +118,13 @@ const ScatterPlotMenus = () => {
 						x={-150}
 						y={innerHeight / 2}
 						textAnchor="middle"
-						transform={`translate(-450,150) rotate(-90) `}>
+						transform={`translate(-430,150) rotate(-90) `}>
 						{options.map((option) =>
 							option.name === selectedX ? option.label : ''
 						)}
 					</Label>
 					<YAxis yScale={yScale} innerWidth={innerWidth} />
-					<Label x={innerWidth / 2} y={innerHeight + 100} textAnchor="middle">
+					<Label x={innerWidth / 2} y={innerHeight + 70} textAnchor="middle">
 						{options.map((option) =>
 							option.name === selectedY ? option.label : ''
 						)}
@@ -104,10 +132,12 @@ const ScatterPlotMenus = () => {
 					<Marks
 						yScale={yScale}
 						xScale={xScale}
+						colorScale={colorScale}
 						data={data}
 						yValue={yValue}
 						xValue={xValue}
-						circleRadius={9}
+						colorValue={colorValue}
+						circleRadius={circleRadius}
 						xAxis={selectedX}
 						yAxis={selectedY}
 					/>
