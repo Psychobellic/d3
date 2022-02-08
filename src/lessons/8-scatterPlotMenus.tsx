@@ -116,7 +116,7 @@ const ScatterPlotMenus = () => {
 					textOffset={25}
 					onHover={setHovered}
 					hovered={hovered}
-					fadeOpacity
+					fadeOpacity={fadeOpacity}
 				/>
 				<g
 					transform={`translate(${margin.left * 25}, ${margin.top * 5})`}
@@ -137,7 +137,7 @@ const ScatterPlotMenus = () => {
 							option.name === selectedY ? option.label : ''
 						)}
 					</Label>
-					<g opacity={hovered ? 0.2 : 1}>
+					<g opacity={hovered ? fadeOpacity : 1}>
 						<Marks
 							yScale={yScale}
 							xScale={xScale}
