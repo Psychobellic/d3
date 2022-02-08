@@ -94,3 +94,12 @@ export const Graticules = styled.path`
 	fill: none;
 	stroke: #5f5f5f;
 `;
+
+export const DropdownLabel = styled.label`
+	display: inline-flex;
+	transform: translateX(25rem);
+`;
+
+export const DropdownSelect = styled.select`
+	transform: translateX(25rem);
+`;

@@ -1,6 +1,8 @@
+import { DropdownSelect } from '../../styles';
+
 const Dropdown = ({ id, handleChange, options, selectedValue }: any) => {
 	return (
-		<select id={id} onChange={handleChange} value={selectedValue}>
+		<DropdownSelect id={id} onChange={handleChange} value={selectedValue}>
 			{options.map(({ name, label }: any) => {
 				return (
 					<option key={id + '+' + name} value={name}>
@@ -8,7 +10,7 @@ const Dropdown = ({ id, handleChange, options, selectedValue }: any) => {
 					</option>
 				);
 			})}
-		</select>
+		</DropdownSelect>
 	);
 };
 

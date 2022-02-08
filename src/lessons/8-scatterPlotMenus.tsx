@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { scaleLinear, extent } from 'd3';
 
 import useFetch from "./8-components/useFetch";
@@ -7,7 +7,7 @@ import Marks from './8-components/Marks';
 import XAxis from './8-components/XAxis';
 import YAxis from './8-components/YAxis';
 
-import { Label } from '../styles';
+import { Label, DropdownLabel } from '../styles';
 
 const ScatterPlotMenus = () => {
   const [selectedX, setSelectedX] = useState('sepal_length');
@@ -30,8 +30,8 @@ const ScatterPlotMenus = () => {
    
 	const yValue = (d: any) => d[`${selectedY}`];
 
-  const width = 960;
-	const height = 650;
+  const width = 970;
+	const height = 670;
 	const margin = {
 		top: 10,
 		right: 10,
@@ -67,33 +67,39 @@ const ScatterPlotMenus = () => {
 				href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Rowdies:wght@300&display=swap"
 				rel="stylesheet"
 			/>
-			<label htmlFor="XAxis"> Select a value for X Axis: </label>
+			<DropdownLabel htmlFor="XAxis">Select a value for X Axis:</DropdownLabel>
 			<Dropdown
 				id="XAxis"
 				options={options}
 				handleChange={handleChangeX}
 				selectedValue={selectedX}
 			/>
-			<label htmlFor="YAxis"> Select a value for Y Axis: </label>
+			<DropdownLabel htmlFor="YAxis">Select a value for Y Axis:</DropdownLabel>
 			<Dropdown
 				id="YAxis"
 				options={options}
 				handleChange={handleChangeY}
 				selectedValue={selectedY}
 			/>
-			<svg width={width * 1.3} height={height * 1.25}>
-				<g transform={`translate(${margin.left * 25}, ${margin.top * 5})`}>
+			<svg width={width * 1.3} height={height * 1.25} style={{transform: 'translateX(-2.5rem)'}}>
+				<g
+					transform={`translate(${margin.left * 25}, ${margin.top * 5})`}
+					style={{ display: 'flex', flexDirection: 'row' }}>
 					<XAxis xScale={xScale} innerHeight={innerHeight} />
 					<Label
 						x={-150}
 						y={innerHeight / 2}
 						textAnchor="middle"
 						transform={`translate(-450,150) rotate(-90) `}>
-						{selectedX}
+						{options.map((option) =>
+							option.name === selectedX ? option.label : ''
+						)}
 					</Label>
 					<YAxis yScale={yScale} innerWidth={innerWidth} />
 					<Label x={innerWidth / 2} y={innerHeight + 100} textAnchor="middle">
-						{selectedY}
+						{options.map((option) =>
+							option.name === selectedY ? option.label : ''
+						)}
 					</Label>
 					<Marks
 						yScale={yScale}
