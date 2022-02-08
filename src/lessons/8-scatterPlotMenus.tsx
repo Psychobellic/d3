@@ -22,6 +22,8 @@ const ScatterPlotMenus = () => {
 		{ name: 'petal_width', label: 'Petal Width' },
 	];
 
+	const fadeOpacity = 0.2;
+	
   const data = useFetch();
 
 	if (!data) {
@@ -113,6 +115,8 @@ const ScatterPlotMenus = () => {
 					tickSize={circleRadius}
 					textOffset={25}
 					onHover={setHovered}
+					hovered={hovered}
+					fadeOpacity
 				/>
 				<g
 					transform={`translate(${margin.left * 25}, ${margin.top * 5})`}
