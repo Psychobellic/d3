@@ -26,5 +26,6 @@ Learn to develop versatile Data Viz applications with React library D3js.
 ![World Map with D3, React and TopoJSON](https://user-images.githubusercontent.com/43976069/152642435-d2c345b1-dc2e-4887-99e2-99cb1d06a5d5.png)
 
 #### Iris Dataset is now Iteractive, selection of values for axes X and Y. Color categorizes species.
-![image](https://user-images.githubusercontent.com/43976069/153036334-0ce7f9aa-1444-4522-a0b0-74908588e4ee.png)
+![image](https://user-images.githubusercontent.com/43976069/153043915-6c848494-dc22-4009-bd90-762a7466a331.png)
+
 
