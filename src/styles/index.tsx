@@ -97,7 +97,7 @@ export const Graticules = styled.path`
 
 export const DropdownLabel = styled.label`
 	display: inline-flex;
-	transform: translateX(17.5rem);
+	transform: translateX(13.5rem);
 	font-size: 1.25rem;
 	font-family: 'Rowdies', cursive;
 	color: #535353;
@@ -116,7 +116,7 @@ export const ColorLegendG = styled.g`
 `;
 
 export const DropdownSelect = styled.select`
-	transform: translateX(17.5rem);
+	transform: translateX(13rem);
 	height: 30px;
 	width: 150px
 `;
