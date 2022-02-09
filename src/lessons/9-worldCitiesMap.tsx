@@ -27,8 +27,8 @@ const WorldCitiesMap = () => {
   const maxRadius = 12;
 
   const sizeScale = scaleSqrt()
-                      .domain([0,max(cityData, sizeValue)])
-                      .range([0, maxRadius]);
+    .domain([0,max(cityData, sizeValue)])
+    .range([0, maxRadius]);
 
 	return (
 		<>
