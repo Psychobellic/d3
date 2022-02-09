@@ -9,6 +9,7 @@ import LineChart from '../src/lessons/6-sfWeekTemp';
 import WorldMap from '../src/lessons/7-worldMap';
 import ScatterPlotMenus from '../src/lessons/8-scatterPlotMenus';
 import WorldCitiesMap from '../src/lessons/9-worldCitiesMap';
+import MissingMigrants from '../src/lessons/10-missingMigrants';
 
 const Home: NextPage = () => {
   return (
@@ -16,7 +17,7 @@ const Home: NextPage = () => {
 			<Head>
 				<title>D3 course</title>
 			</Head>
-			<WorldCitiesMap />
+			<ScatterPlotMenus />
 		</Wrapper>
 	);
 }
