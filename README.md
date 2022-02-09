@@ -24,3 +24,6 @@ Learn to develop versatile Data Viz applications with React library D3js.
 
 #### World Map with D3, React and TopoJSON
 ![World Map with D3, React and TopoJSON](https://user-images.githubusercontent.com/43976069/152642435-d2c345b1-dc2e-4887-99e2-99cb1d06a5d5.png)
+
+#### Cities with 50k+ population around the world.
+![image](https://user-images.githubusercontent.com/43976069/153246653-0081131b-cd63-4afa-9bc1-38f1783dde7f.png)
