@@ -76,23 +76,22 @@ export const MapPath = styled.path`
 `;
 
 export const OuterMapPath = styled.path`
-	fill: #2c29ff;
-	stroke: #8b8b8b;
-	opacity: 0.5;
+	fill: #eeeeee;
+	opacity: 0.4;
 `;
 
 export const Countries = styled.path`
-	fill: #3d2730;
+	fill: #e4e4e4;
 `;
 
 export const Interiors = styled.path`
 	fill: none;
-	stroke: #66cdd4;
+	stroke: #b9b9b9;
 `;
 
 export const Graticules = styled.path`
 	fill: none;
-	stroke: #5f5f5f;
+	stroke: #d3d3d3;
 `;
 
 export const DropdownLabel = styled.label`
@@ -115,8 +114,14 @@ export const ColorLegendG = styled.g`
 	
 `;
 
+export const CityCircle = styled.circle`
+	fill: #2595b1;
+	opacity: 0.4;
+`;
+
 export const DropdownSelect = styled.select`
 	transform: translateX(13rem);
 	height: 30px;
 	width: 150px
 `;
+
