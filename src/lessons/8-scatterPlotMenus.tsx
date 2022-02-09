@@ -82,14 +82,14 @@ const ScatterPlotMenus = () => {
 				rel="stylesheet"
 			/>
 			<br />
-			<DropdownLabel htmlFor="XAxis">Select a value for X Axis:</DropdownLabel>
+			<DropdownLabel htmlFor="XAxis">Select a value for Y Axis:</DropdownLabel>
 			<MenuDropdown
 				id="XAxis"
 				options={options}
 				value={selectedX}
 				handleChange={handleChangeX}
 			/>
-			<DropdownLabel htmlFor="YAxis">Select a value for Y Axis:</DropdownLabel>
+			<DropdownLabel htmlFor="YAxis">Select a value for X Axis:</DropdownLabel>
 			<MenuDropdown
 				id="YAxis"
 				options={options}
@@ -147,8 +147,8 @@ const ScatterPlotMenus = () => {
 							xValue={xValue}
 							colorValue={colorValue}
 							circleRadius={circleRadius}
-							xAxis={selectedX}
-							yAxis={selectedY}
+							xAxis={selectedY}
+							yAxis={selectedX}
 						/>
 					</g>
 					<Marks
@@ -160,8 +160,8 @@ const ScatterPlotMenus = () => {
 						xValue={xValue}
 						colorValue={colorValue}
 						circleRadius={circleRadius}
-						xAxis={selectedX}
-						yAxis={selectedY}
+						xAxis={selectedY}
+						yAxis={selectedX}
 					/>
 				</g>
 			</svg>

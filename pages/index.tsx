@@ -17,7 +17,7 @@ const Home: NextPage = () => {
 			<Head>
 				<title>D3 course</title>
 			</Head>
-			<MissingMigrants />
+			<ScatterPlotMenus />
 		</Wrapper>
 	);
 }
