@@ -26,7 +26,7 @@ Learn to develop versatile Data Viz applications with React library D3js.
 ![World Map with D3, React and TopoJSON](https://user-images.githubusercontent.com/43976069/152642435-d2c345b1-dc2e-4887-99e2-99cb1d06a5d5.png)
 
 #### Colored Iris DataSet ScatterPlot. Colors means distinct species with hover effect, values for X and Y axes are customizable by the selection header.
-![image](https://user-images.githubusercontent.com/43976069/153305203-edf3370b-0ced-4ba2-b72d-abf1b1796f54.png)
+![image](https://user-images.githubusercontent.com/43976069/153305453-f60dc812-2ba4-4696-a8ee-9df1946fa983.png)
 
 #### Cities with 50k+ population around the world.
 ![image](https://user-images.githubusercontent.com/43976069/153246653-0081131b-cd63-4afa-9bc1-38f1783dde7f.png)
