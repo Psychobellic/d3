@@ -1,6 +1,7 @@
 import useWorldMap from './9-components/useWorldMap';
 import useCityData from './9-components/useCityData';
 import Marks from './9-components/Marks';
+import { scaleSqrt, max } from 'd3';
 
 const WorldCitiesMap = () => {
   const worldData = useWorldMap();
@@ -22,6 +23,13 @@ const WorldCitiesMap = () => {
 	const innerHeight = height - (margin.top + margin.bottom);
 	const innerWidth = width - (margin.right + margin.left);  
 
+  const sizeValue = d => d.population;
+  const maxRadius = 12;
+
+  const sizeScale = scaleSqrt()
+                      .domain([0,max(cityData, sizeValue)])
+                      .range([0, maxRadius]);
+
 	return (
 		<>
 			<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +42,12 @@ const WorldCitiesMap = () => {
 				width={width * 1.5}
 				height={height * 1.75}
 				transform={`translate(-${height / 2}, -${width / 2.5})`}>
-				<Marks worldData={worldData} cityData={cityData} />
+				<Marks
+					worldData={worldData}
+					cityData={cityData}
+					sizeValue={sizeValue}
+					sizeScale={sizeScale}
+        />
 			</svg>
 		</>
 	);
