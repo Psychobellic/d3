@@ -29,4 +29,4 @@ Learn to develop versatile Data Viz applications with React library D3js.
 ![image](https://user-images.githubusercontent.com/43976069/153259828-c14c7c13-75db-41b9-96a1-f1567e5d0ecc.png)
 
 #### Cities with 50k+ population around the world.
-![image](https://user-images.githubusercontent.com/43976069/153246653-0081131b-cd63-4afa-9bc1-38f1783dde7f.png)
+![image](https://user-images.githubusercontent.com/43976069/153260955-cf7833cc-da74-44da-9363-cecb169db86e.png)
