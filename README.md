@@ -31,3 +31,7 @@ Learn to develop versatile Data Viz applications with React library D3js.
 
 #### Cities with 50k+ population around the world.
 ![image](https://user-images.githubusercontent.com/43976069/153246653-0081131b-cd63-4afa-9bc1-38f1783dde7f.png)
+
+#### [Total Missing and Dead Migrants in 2022](https://missingmigrants.iom.int/downloads)
+![image](https://user-images.githubusercontent.com/43976069/153493777-fd81d090-c59c-48b0-9c62-419222371935.png)
+
