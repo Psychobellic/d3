@@ -5,8 +5,8 @@ import XAxis from './6-components/XAxis';
 import YAxis from './6-components/YAxis';
 import { Label } from '../styles';
 
-const LineChart = () => {
-  const width = 960;
+const SfWeekTemp = () => {
+	const width = 960;
 	const height = 650;
 	const margin = {
 		top: 10,
@@ -36,7 +36,7 @@ const LineChart = () => {
 	const yScale = scaleLinear()
 		.domain(extent(data, yValue))
 		.range([innerHeight, 0])
-		.nice()
+		.nice();
 
 	return (
 		<>
@@ -48,7 +48,11 @@ const LineChart = () => {
 			/>
 			<svg width={width * 1.3} height={height * 1.25}>
 				<g transform={`translate(${margin.left * 25}, ${margin.top * 5})`}>
-					<XAxis xScale={xScale} innerHeight={innerHeight} formatTime={formatTime} />
+					<XAxis
+						xScale={xScale}
+						innerHeight={innerHeight}
+						formatTime={formatTime}
+					/>
 					<Label
 						x={-150}
 						y={innerHeight / 2}
@@ -78,4 +82,4 @@ const LineChart = () => {
 	);
 };
 
-export default LineChart;
+export default SfWeekTemp;

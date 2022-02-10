@@ -13,6 +13,7 @@ Learn to develop versatile Data Viz applications with React library D3js.
 
 
 #### Graphs:
+
 ##### [World Population Bar Chart](https://gist.githubusercontent.com/Psychobellic/5ce889f0e43d5cb46bd5f3695f2177bc/raw/UN_Population_2019.csv): 
 ![World Population Bar Chart](https://user-images.githubusercontent.com/43976069/152383542-0763f394-b680-461a-893e-609195d7cc88.png)
 
