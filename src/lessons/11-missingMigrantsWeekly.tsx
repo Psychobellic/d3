@@ -1,17 +1,19 @@
-import { scaleLinear, scaleTime, extent, timeFormat } from 'd3';
-import useFetch from './10-components/useFetch';
-import Marks from './10-components/Marks';
-import XAxis from './10-components/YAxis';
-import YAxis from './10-components/XAxis';
+import { scaleLinear, scaleTime, extent, timeFormat, bin, timeWeeks, sum, max } from 'd3';
+import useFetch from './11-components/useFetch';
+import Marks from './11-components/Marks';
+import XAxis from './11-components/XAxis';
+import YAxis from './11-components/YAxis';
 import { Label } from '../styles';
 
-const MissingMigrantsMonthly = () => {
+const MissingMigrantsWeekly = () => {
 	const data = useFetch();
 
 	if (!data) {
 		return <pre>Loading...</pre>;
 	}
 
+	const xAxisTickFormat = timeFormat('%d/%m/%Y');
+	
 	const width = 960;
 	const height = 650;
 	const margin = {
@@ -26,17 +28,28 @@ const MissingMigrantsMonthly = () => {
 
 	const xValue = (d: any) => d['Incident Date'];
 	const yValue = (d: any) => d['Total Number of Dead and Missing'];
-
-	const xAxisTickFormat = timeFormat('%d/%m/%Y');
-
+	
 	const xScale = scaleTime()
 		.domain(extent(data, xValue))
 		.range([0, innerWidth])
 		.nice();
 
+	const [start, stop] = xScale.domain();
+
+	const binnedData = bin()
+		.value(xValue)
+		.domain(xScale.domain())
+		.thresholds(timeWeeks(start, stop))(data)
+		.map(array => ({
+			totalDeadAndMissing: sum(array, yValue),
+			x0: array.x0,
+			x1: array.x1,
+		}))
+
 	const yScale = scaleLinear()
-		.domain(extent(data, yValue))
-		.range([innerHeight, 0]);
+		.domain(extent([0, max(binnedData, d => d.y)]))
+		.range([innerHeight, 0])
+		.nice();
 
 	return (
 		<>
@@ -48,7 +61,7 @@ const MissingMigrantsMonthly = () => {
 			/>
 			<svg width={width * 1.3} height={height * 1.25}>
 				<g transform={`translate(${margin.left * 25}, ${margin.top * 5})`}>
-					<XAxis xScale={xScale} innerHeight={innerHeight} xValue={xValue} />
+					<XAxis xScale={xScale} innerHeight={innerHeight} xValue={xValue} tickFormat={xAxisTickFormat}/>
 					<Label
 						x={-150}
 						y={innerHeight / 2}
@@ -56,16 +69,21 @@ const MissingMigrantsMonthly = () => {
 						transform={`translate(-450,150) rotate(-90) `}>
 						Total Dead and Missing Migrants
 					</Label>
-					<YAxis yScale={yScale} innerWidth={innerWidth} yValue={yValue} />
+					<YAxis
+						yScale={yScale}
+						innerWidth={innerWidth}
+						yValue={yValue}
+						tickFormat={xAxisTickFormat}
+					/>
 					<Label x={innerWidth / 2} y={innerHeight + 100} textAnchor="middle">
 						Time
 					</Label>
 					<Marks
 						yScale={yScale}
 						xScale={xScale}
-						data={data}
-						yValue={yValue}
 						xValue={xValue}
+						yValue={yValue}
+						binnedData={binnedData}
 						circleRadius={4}
 						tickFormat={xAxisTickFormat}
 					/>
@@ -75,4 +93,4 @@ const MissingMigrantsMonthly = () => {
 	);
 };
 
-export default MissingMigrantsMonthly;
+export default MissingMigrantsWeekly;
