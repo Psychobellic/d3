@@ -1,4 +1,4 @@
-import { scaleLinear, scaleTime, extent, timeFormat, bin, timeWeeks, sum, max } from 'd3';
+import { scaleLinear, scaleTime, extent, timeFormat, bin, timeDays, sum, max } from 'd3';
 import useFetch from './11-components/useFetch';
 import Marks from './11-components/Marks';
 import XAxis from './11-components/XAxis';
@@ -14,8 +14,8 @@ const MissingMigrantsWeekly = () => {
 
 	const xAxisTickFormat = timeFormat('%d/%m/%Y');
 	
-	const width = 960;
-	const height = 650;
+	const width = 800;
+	const height = 600;
 	const margin = {
 		top: 10,
 		right: 10,
@@ -39,15 +39,16 @@ const MissingMigrantsWeekly = () => {
 	const binnedData = bin()
 		.value(xValue)
 		.domain(xScale.domain())
-		.thresholds(timeWeeks(start, stop))(data)
+		.thresholds(timeDays(start, stop))(data)
 		.map(array => ({
 			totalDeadAndMissing: sum(array, yValue),
+			y: sum(array, yValue),
 			x0: array.x0,
 			x1: array.x1,
 		}))
 
 	const yScale = scaleLinear()
-		.domain(extent([0, max(binnedData, d => d.y)]))
+		.domain([0, max(binnedData, d => d.y)])
 		.range([innerHeight, 0])
 		.nice();
 
@@ -81,10 +82,8 @@ const MissingMigrantsWeekly = () => {
 					<Marks
 						yScale={yScale}
 						xScale={xScale}
-						xValue={xValue}
-						yValue={yValue}
 						binnedData={binnedData}
-						circleRadius={4}
+						innerHeight={innerHeight}
 						tickFormat={xAxisTickFormat}
 					/>
 				</g>
