@@ -5,7 +5,7 @@ import XAxis from './11-components/XAxis';
 import YAxis from './11-components/YAxis';
 import { Label } from '../styles';
 
-const MissingMigrantsWeekly = () => {
+const MissingMigrantsDaily = () => {
 	const data = useFetch();
 
 	if (!data) {
@@ -15,7 +15,7 @@ const MissingMigrantsWeekly = () => {
 	const xAxisTickFormat = timeFormat('%d/%m/%Y');
 	
 	const width = 800;
-	const height = 600;
+	const height = 500;
 	const margin = {
 		top: 10,
 		right: 10,
@@ -61,13 +61,13 @@ const MissingMigrantsWeekly = () => {
 				rel="stylesheet"
 			/>
 			<svg width={width * 1.3} height={height * 1.25}>
-				<g transform={`translate(${margin.left * 25}, ${margin.top * 5})`}>
+				<g transform={`translate(${margin.left * 15}, ${margin.top * 5})`}>
 					<XAxis xScale={xScale} innerHeight={innerHeight} xValue={xValue} tickFormat={xAxisTickFormat}/>
 					<Label
 						x={-150}
 						y={innerHeight / 2}
 						textAnchor="middle"
-						transform={`translate(-450,150) rotate(-90) `}>
+						transform={`translate(-325,110) rotate(-90) `}>
 						Total Dead and Missing Migrants
 					</Label>
 					<YAxis
@@ -76,7 +76,7 @@ const MissingMigrantsWeekly = () => {
 						yValue={yValue}
 						tickFormat={xAxisTickFormat}
 					/>
-					<Label x={innerWidth / 2} y={innerHeight + 100} textAnchor="middle">
+					<Label x={innerWidth / 2} y={innerHeight + 75} textAnchor="middle">
 						Time
 					</Label>
 					<Marks
@@ -92,4 +92,4 @@ const MissingMigrantsWeekly = () => {
 	);
 };
 
-export default MissingMigrantsWeekly;
+export default MissingMigrantsDaily;

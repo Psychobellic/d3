@@ -10,7 +10,7 @@ import WorldMap from '../src/lessons/7-worldMap';
 import ScatterPlotMenus from '../src/lessons/8-scatterPlotMenus';
 import WorldCitiesMap from '../src/lessons/9-worldCitiesMap';
 import MissingMigrants from '../src/lessons/10-missingMigrants';
-import MissingMigrantsWeekly from '../src/lessons/11-missingMigrantsWeekly';
+import MissingMigrantsDaily from '../src/lessons/11-missingMigrantsDaily';
 
 const Home: NextPage = () => {
   return (
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 			<Head>
 				<title>D3 course</title>
 			</Head>
-			<MissingMigrantsWeekly />
+			<MissingMigrantsDaily />
 		</Wrapper>
 	);
 }

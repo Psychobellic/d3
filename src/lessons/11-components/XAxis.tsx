@@ -9,7 +9,7 @@ const XAxis = ({ xScale, innerHeight, tickFormat }: any) => {
 			<line y2={innerHeight} />
 			<text
 				style={{ textAnchor: 'middle', fontSize: '0.5rem' }}
-				dy="1.5rem"
+				dy="1.75rem"
 				y={innerHeight}>
 				{tickFormat(tickValue)}
 			</text>
