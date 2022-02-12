@@ -35,7 +35,11 @@ Learn to develop versatile Data Viz applications with React library D3js.
 #### [Total Missing and Dead Migrants in 2022](https://missingmigrants.iom.int/downloads)
 ![image](https://user-images.githubusercontent.com/43976069/153493777-fd81d090-c59c-48b0-9c62-419222371935.png)
 
-#### Daily Total Missing and Dead Migrants in 2022 with barchart 
+#### Daily Total Missing and Dead Migrants until 6/feb/2022 with barchart 
 ![image](https://user-images.githubusercontent.com/43976069/153711569-4c40cf46-e933-49dc-a91f-ac85817de5e2.png)
+
+#### Total Missing and Dead Migrants 2022 until 6/feb/2022 by geolocation
+![image](https://user-images.githubusercontent.com/43976069/153713387-c3e92a35-996f-43a8-a18d-1e6c97d95280.png)
+
 
 
