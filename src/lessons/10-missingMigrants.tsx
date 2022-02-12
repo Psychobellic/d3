@@ -5,7 +5,7 @@ import XAxis from './10-components/YAxis';
 import YAxis from './10-components/XAxis';
 import { Label } from '../styles';
 
-const MissingMigrants = () => {
+const MissingMigrantsMonthly = () => {
 	const data = useFetch();
 
 	if (!data) {
@@ -36,7 +36,7 @@ const MissingMigrants = () => {
 
 	const yScale = scaleLinear()
 		.domain(extent(data, yValue))
-		.range([innerHeight, 0])
+		.range([innerHeight, 0]);
 
 	return (
 		<>
@@ -56,11 +56,7 @@ const MissingMigrants = () => {
 						transform={`translate(-450,150) rotate(-90) `}>
 						Total Dead and Missing Migrants
 					</Label>
-					<YAxis
-						yScale={yScale}
-						innerWidth={innerWidth}
-						yValue={yValue}
-					/>
+					<YAxis yScale={yScale} innerWidth={innerWidth} yValue={yValue} />
 					<Label x={innerWidth / 2} y={innerHeight + 100} textAnchor="middle">
 						Time
 					</Label>
@@ -79,4 +75,4 @@ const MissingMigrants = () => {
 	);
 };
 
-export default MissingMigrants;
+export default MissingMigrantsMonthly;
