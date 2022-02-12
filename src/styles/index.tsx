@@ -119,6 +119,11 @@ export const CityCircle = styled.circle`
 	opacity: 0.4;
 `;
 
+export const CityWarningCircle = styled.circle`
+	fill: #c20101;
+	opacity: 0.4;
+`;
+
 export const DropdownSelect = styled.select`
 	transform: translateX(13rem);
 	height: 30px;

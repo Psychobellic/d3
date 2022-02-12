@@ -41,7 +41,7 @@ const MissingMigrantsDaily = () => {
 		.domain(xScale.domain())
 		.thresholds(timeDays(start, stop))(data)
 		.map(array => ({
-			totalDeadAndMissing: sum(array, yValue),
+			totalDeadAndMissing: sum(array, yValue), // used in Marks label on hover
 			y: sum(array, yValue),
 			x0: array.x0,
 			x1: array.x1,
